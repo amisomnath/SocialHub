@@ -54,6 +54,7 @@ INSTALLED_APPS = [
     "django_mysql",
     'drf_yasg',
     'post',
+    'users',
 ]
 
 
@@ -219,3 +220,11 @@ ACCOUNT_USERNAME_REQUIRED = False
 ACCOUNT_EMAIL_REQUIRED = False
 ACCOUNT_EMAIL_VERIFICATION = 'optional'
 ACCOUNT_AUTHENTICATION_METHOD = 'username'
+
+
+AUTH_USER_MODEL = 'users.CustomUser'
+
+
+REST_AUTH_REGISTER_SERIALIZERS = {
+    'REGISTER_SERIALIZER': 'utils.drf_serializers.CustomRegisterSerializer',
+}
