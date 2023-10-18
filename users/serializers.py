@@ -4,7 +4,7 @@ from django.contrib.auth.validators import ASCIIUsernameValidator
 from rest_framework import serializers
 from rest_framework.exceptions import ParseError
 from rest_framework.status import HTTP_400_BAD_REQUEST
-from users.models import CustomUser
+from users.models import CustomUser, BlockedUser
 from utils.drf_serializers import BaseStatusResponseSerializer
 
 
@@ -47,3 +47,8 @@ class UserShortSerializers(serializers.ModelSerializer):
         model = CustomUser
         fields = ('username', 'email')
 
+
+class BlockedUserSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = BlockedUser
+        fields = '__all__'

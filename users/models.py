@@ -14,3 +14,11 @@ class CustomUser(AbstractUser):
     def __str__(self):
         return self.email
 
+
+class BlockedUser(models.Model):
+    blocker = models.ForeignKey(CustomUser, on_delete=models.CASCADE, related_name='blocked_users')
+    blocked_user = models.ForeignKey(CustomUser, on_delete=models.CASCADE, related_name='blockers')
+    blocked_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.id
