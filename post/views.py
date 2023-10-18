@@ -64,9 +64,7 @@ class PostAPIView(generics.GenericAPIView):
             queryset = queryset.filter(author__username=author)
 
         if tags:
-            print("xyz")
             queryset = queryset.filter(tags__id=tags)
-            print("tags-----", queryset)
 
         if kwargs.get('pk'):
             post = generics.get_object_or_404(self.get_queryset(), pk=kwargs['pk'])
