@@ -34,6 +34,7 @@ class PostAPIView(generics.GenericAPIView):
         body = request.query_params.get('body')
         author = request.query_params.get('author')
         search_query = request.query_params.get('search')
+        tags = request.query_params.get('tags')
         if request.user.is_superuser:
             queryset = Post.objects.all()
         else:
@@ -61,6 +62,11 @@ class PostAPIView(generics.GenericAPIView):
 
         if author:
             queryset = queryset.filter(author__username=author)
+
+        if tags:
+            print("xyz")
+            queryset = queryset.filter(tags__id=tags)
+            print("tags-----", queryset)
 
         if kwargs.get('pk'):
             post = generics.get_object_or_404(self.get_queryset(), pk=kwargs['pk'])

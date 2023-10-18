@@ -21,8 +21,10 @@ class Post(models.Model):
         null=True,
         related_name='post_for_posting')
     is_deleted = models.BooleanField(null=True, blank=True, default=False)
-    tags = models.ManyToManyField(
-        Tag,
+    tags = models.ForeignKey(
+        Tag,on_delete=models.CASCADE,
+        blank=True,
+        null=True,
         related_name='tag_for_posting')
 
     def __int__(self):
