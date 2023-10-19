@@ -77,4 +77,5 @@ class CustomUserViewSet(viewsets.ModelViewSet):
             blocked_user.delete()
             return Response({"message": f"You have unblocked {user_to_unblock.username}."}, status=status.HTTP_200_OK)
         else:
-            return Response({"error": f"{user_to_unblock.username} is not in your blocked users list."}, status=status.HTTP_400_BAD_REQUEST)
+            return Response({"error": f"{user_to_unblock.username} is not in your blocked users list."},
+                            status=status.HTTP_400_BAD_REQUEST)
